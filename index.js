@@ -4,11 +4,15 @@ module.exports = {
     extends : 'xo-react',
     rules   : {
         'react/display-name'           : ['error'],
-        'react/forbid-component-props' : ['error'],
-        'react/forbid-elements'        : ['error', {
+        'react/forbid-component-props' : ['error', {
+            forbid : ['style']
+        }],
+        'react/forbid-elements' : ['error', {
             forbid : ['blink']
         }],
-        'react/forbid-prop-types'        : ['error'],
+        'react/forbid-prop-types' :  ['error', {
+            forbid : ['any', 'array']
+        }],
         'react/no-array-index-key'       : ['error'],
         'react/no-children-prop'         : ['error'],
         'react/no-danger'                : ['error'],
@@ -24,7 +28,7 @@ module.exports = {
         'react/no-unescaped-entities'    : ['error'],
         'react/no-unknown-property'      : ['error'],
         'react/no-unused-prop-types'     : ['error', {
-            skipShapeProps : false
+            skipShapeProps : true
         }],
         'react/no-will-update-set-state'      : ['error', 'disallow-in-func'],
         'react/prefer-es6-class'              : ['error'],
