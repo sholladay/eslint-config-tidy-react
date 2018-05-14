@@ -8,24 +8,22 @@ module.exports = {
         'react/forbid-elements'        : ['error', {
             forbid : ['blink']
         }],
-        'react/forbid-prop-types'                    : ['error'],
-        'react/no-array-index-key'                   : ['error'],
-        'react/no-children-prop'                     : ['error'],
-        'react/no-danger'                            : ['error'],
-        'react/no-danger-with-children'              : ['error'],
-        'react/no-deprecated'                        : ['error'],
-        'react/no-did-mount-set-state'               : ['error', 'disallow-in-func'],
-        'react/no-did-update-set-state'              : ['error', 'disallow-in-func'],
-        'react/no-direct-mutation-state'             : ['error'],
-        'react/no-find-dom-node'                     : ['error'],
-        'react/no-is-mounted'                        : ['error'],
-        // Not yet released.
-        // 'react/no-redundant-should-component-update' : ['error'],
-        'react/no-render-return-value'               : ['error'],
-        'react/no-string-refs'                       : ['error'],
-        'react/no-unescaped-entities'                : ['error'],
-        'react/no-unknown-property'                  : ['error'],
-        'react/no-unused-prop-types'                 : ['error', {
+        'react/forbid-prop-types'        : ['error'],
+        'react/no-array-index-key'       : ['error'],
+        'react/no-children-prop'         : ['error'],
+        'react/no-danger'                : ['error'],
+        'react/no-danger-with-children'  : ['error'],
+        'react/no-deprecated'            : ['error'],
+        'react/no-did-mount-set-state'   : ['error', 'disallow-in-func'],
+        'react/no-did-update-set-state'  : ['error', 'disallow-in-func'],
+        'react/no-direct-mutation-state' : ['error'],
+        'react/no-find-dom-node'         : ['error'],
+        'react/no-is-mounted'            : ['error'],
+        'react/no-render-return-value'   : ['error'],
+        'react/no-string-refs'           : ['error'],
+        'react/no-unescaped-entities'    : ['error'],
+        'react/no-unknown-property'      : ['error'],
+        'react/no-unused-prop-types'     : ['error', {
             skipShapeProps : false
         }],
         'react/no-will-update-set-state'      : ['error', 'disallow-in-func'],
@@ -54,7 +52,6 @@ module.exports = {
             maximum : 4,
             when    : 'always'
         }],
-        'react/jsx-no-bind'              : ['error'],
         'react/jsx-no-comment-textnodes' : ['error'],
         'react/jsx-no-duplicate-props'   : ['error', {
             ignoreCase : true
@@ -68,7 +65,7 @@ module.exports = {
             noSortAlphabetically : true,
             reservedFirst        : true
         }],
-        'react/jsx-tag-spacing'     : ['error', {
+        'react/jsx-tag-spacing' : ['error', {
             closingSlash      : 'never',
             beforeSelfClosing : 'always',
             afterOpening      : 'never'
