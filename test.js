@@ -4,10 +4,11 @@ import eslint from 'eslint';
 import tempWrite from 'temp-write';
 import tidyReact from '.';
 
-const hasRule = (errors, ruleId) => {
-    return errors.some((err) => {
-        return err.ruleId === ruleId;
+const getRules = (errors) => {
+    const ruleIds = errors.map((error) => {
+        return error.ruleId;
     });
+    return [...new Set(ruleIds)];
 };
 
 const runEslint = (str, conf) => {
@@ -24,7 +25,9 @@ test('main', (t) => {
     t.true(isPlainObj(tidyReact.rules));
 
     const errors = runEslint('var app = <div className="foo">Unicorn</div>', tidyReact);
-    t.true(hasRule(errors, 'react/react-in-jsx-scope'));
+    t.deepEqual(getRules(errors), [
+        'react/react-in-jsx-scope'
+    ]);
 });
 
 test('no errors', (t) => {
