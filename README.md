@@ -1,4 +1,4 @@
-# eslint-config-tidy-react [![Build status for ESLint Config Tidy React](https://img.shields.io/circleci/project/sholladay/eslint-config-tidy-react/master.svg "Build Status")](https://circleci.com/gh/sholladay/eslint-config-tidy-react "Builds")
+# eslint-config-tidy-react [![Build status for ESLint Config Tidy React](https://travis-ci.com/sholladay/eslint-config-tidy-react.svg?branch=master "Build Status")](https://travis-ci.com/sholladay/eslint-config-tidy-react "Builds")
 
 > ESLint [shareable config](http://eslint.org/docs/developer-guide/shareable-configs.html) for [React](https://facebook.github.io/react/) with Tidy style
 
