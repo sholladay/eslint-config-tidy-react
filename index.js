@@ -10,7 +10,7 @@ module.exports = {
         'react/forbid-elements' : ['error', {
             forbid : ['blink']
         }],
-        'react/forbid-prop-types' :  ['error', {
+        'react/forbid-prop-types' : ['error', {
             forbid : ['any', 'array']
         }],
         'react/no-array-index-key'       : 'error',

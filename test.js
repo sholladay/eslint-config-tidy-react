@@ -1,7 +1,7 @@
+import path from 'path';
 import test from 'ava';
 import isPlainObj from 'is-plain-obj';
 import eslint from 'eslint';
-import tempWrite from 'temp-write';
 import tidyReact from '.';
 
 const getRules = (errors) => {
@@ -11,26 +11,29 @@ const getRules = (errors) => {
     return [...new Set(ruleIds)];
 };
 
-const runEslint = (str, conf) => {
+const lint = (input) => {
     const linter = new eslint.CLIEngine({
         useEslintrc : false,
-        configFile  : tempWrite.sync(JSON.stringify(conf))
+        configFile  : path.join(__dirname, 'index.js')
     });
 
-    return linter.executeOnText(str).results[0].messages;
+    return linter.executeOnText(input).results[0].messages;
 };
 
-test('main', (t) => {
+test('config is valid', (t) => {
     t.true(isPlainObj(tidyReact));
+    t.is(typeof tidyReact.extends, 'string');
+    t.true(tidyReact.extends.length > 1);
     t.true(isPlainObj(tidyReact.rules));
-
-    const errors = runEslint('var app = <div className="foo">Unicorn</div>', tidyReact);
-    t.deepEqual(getRules(errors), [
-        'react/react-in-jsx-scope'
-    ]);
+    t.true(Object.keys(tidyReact.rules).length > 50);
 });
 
-test('no errors', (t) => {
-    const errors = runEslint('var React = require(\'react\');\nvar el = <div />;', tidyReact);
+test('no errors for good code', (t) => {
+    const errors = lint('var React = require(\'react\');\nvar el = <div />;');
     t.deepEqual(errors, []);
+});
+
+test('requires react import', (t) => {
+    const errors = lint('var el = <div />');
+    t.deepEqual(getRules(errors), ['react/react-in-jsx-scope']);
 });
