@@ -3,10 +3,7 @@
 module.exports = {
     extends : 'xo-react',
     rules   : {
-        'react/display-name'           : 'error',
-        'react/forbid-component-props' : ['error', {
-            forbid : ['style']
-        }],
+        'react/display-name'    : 'error',
         'react/forbid-elements' : ['error', {
             forbid : ['blink']
         }],
@@ -24,35 +21,33 @@ module.exports = {
         'react/no-find-dom-node'         : 'error',
         'react/no-is-mounted'            : 'error',
         'react/no-render-return-value'   : 'error',
-        'react/no-string-refs'           : 'error',
         'react/no-unescaped-entities'    : 'error',
         'react/no-unknown-property'      : 'error',
         'react/no-unused-prop-types'     : ['error', {
             skipShapeProps : true
         }],
-        'react/no-will-update-set-state'      : ['error', 'disallow-in-func'],
-        'react/prefer-es6-class'              : 'error',
-        'react/prefer-stateless-function'     : 'error',
-        'react/prop-types'                    : 'error',
-        'react/react-in-jsx-scope'            : 'error',
-        'react/require-default-props'         : 'error',
-        'react/require-render-return'         : 'error',
-        'react/self-closing-comp'             : 'error',
-        'react/sort-comp'                     : 'error',
-        'react/sort-prop-types'               : 'error',
-        'react/style-prop-object'             : 'error',
-        'react/void-dom-elements-no-children' : 'error',
-        'react/jsx-boolean-value'             : 'error',
-        'react/jsx-closing-bracket-location'  : ['error', 'line-aligned'],
-        'react/jsx-curly-spacing'             : ['error', 'never'],
-        'react/jsx-equals-spacing'            : ['error', 'never'],
-        'react/jsx-filename-extension'        : 'error',
-        'react/jsx-first-prop-new-line'       : 'error',
-        'react/jsx-handler-names'             : 'error',
-        'react/jsx-indent'                    : ['error', 4],
-        'react/jsx-indent-props'              : ['error', 4],
-        'react/jsx-key'                       : 'error',
-        'react/jsx-max-props-per-line'        : ['error', {
+        'react/no-will-update-set-state'     : ['error', 'disallow-in-func'],
+        'react/prefer-es6-class'             : 'error',
+        'react/prefer-stateless-function'    : 'error',
+        'react/prop-types'                   : 'error',
+        'react/react-in-jsx-scope'           : 'error',
+        'react/require-render-return'        : 'error',
+        'react/sort-comp'                    : 'error',
+        'react/sort-prop-types'              : 'error',
+        'react/state-in-constructor'         : ['error', 'always'],
+        'react/static-property-placement'    : ['error', 'property assignment'],
+        'react/style-prop-object'            : 'error',
+        'react/jsx-closing-bracket-location' : ['error', 'line-aligned'],
+        'react/jsx-equals-spacing'           : ['error', 'never'],
+        'react/jsx-filename-extension'       : 'error',
+        'react/jsx-first-prop-new-line'      : ['error', 'multiline'],
+        'react/jsx-handler-names'            : 'error',
+        'react/jsx-indent'                   : ['error', 4, {
+            checkAttributes          : true,
+            indentLogicalExpressions : true
+        }],
+        'react/jsx-indent-props'       : ['error', 4],
+        'react/jsx-max-props-per-line' : ['error', {
             maximum : 4,
             when    : 'always'
         }],
@@ -60,22 +55,19 @@ module.exports = {
         'react/jsx-no-duplicate-props'   : ['error', {
             ignoreCase : true
         }],
-        'react/jsx-no-target-blank' : 'error',
-        'react/jsx-no-undef'        : 'error',
-        'react/jsx-pascal-case'     : 'error',
-        'react/jsx-sort-props'      : ['error', {
+        'react/jsx-sort-props' : ['error', {
             callbacksLast        : true,
-            shorthandFirst       : true,
             noSortAlphabetically : true,
-            reservedFirst        : true
+            reservedFirst        : true,
+            shorthandFirst       : true
         }],
         'react/jsx-tag-spacing' : ['error', {
-            closingSlash      : 'never',
+            afterOpening      : 'never',
+            beforeClosing     : 'never',
             beforeSelfClosing : 'always',
-            afterOpening      : 'never'
+            closingSlash      : 'never'
         }],
-        'react/jsx-uses-react'      : 'error',
-        'react/jsx-uses-vars'       : 'error',
-        'react/jsx-wrap-multilines' : 'error'
+        'react/jsx-uses-react' : 'error',
+        'react/jsx-uses-vars'  : 'error'
     }
 };

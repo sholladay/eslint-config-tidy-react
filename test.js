@@ -25,15 +25,19 @@ test('config is valid', (t) => {
     t.is(typeof tidyReact.extends, 'string');
     t.true(tidyReact.extends.length > 1);
     t.true(isPlainObj(tidyReact.rules));
-    t.true(Object.keys(tidyReact.rules).length > 50);
-});
-
-test('no errors for good code', (t) => {
-    const errors = lint('var React = require(\'react\');\nvar el = <div />;');
-    t.deepEqual(errors, []);
+    t.true(Object.keys(tidyReact.rules).length >= 40);
 });
 
 test('requires react import', (t) => {
-    const errors = lint('var el = <div />');
-    t.deepEqual(getRules(errors), ['react/react-in-jsx-scope']);
+    const bad = 'var el = <div />';
+    const good = 'var React = require(react);\n' + bad;
+    t.deepEqual(getRules(lint(bad)), ['react/react-in-jsx-scope']);
+    t.deepEqual(lint(good), []);
+});
+
+test('requires indentation of multiline logical expressions', (t) => {
+    const bad = 'var React = require(\'react\');\nvar el = (\n    <div>\n        {condition && (\n        <div />\n        )}\n    </div>\n);';
+    const good = 'var React = require(\'react\');\nvar el = (\n    <div>\n        {condition && (\n            <div />\n        )}\n    </div>\n);';
+    t.deepEqual(getRules(lint(bad)), ['react/jsx-indent']);
+    t.deepEqual(lint(good), []);
 });
