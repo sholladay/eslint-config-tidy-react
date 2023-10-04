@@ -1,6 +1,6 @@
 {
     "name": "eslint-config-tidy-react",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "description": "ESLint shareable config for React with Tidy style",
     "homepage": "https://github.com/sholladay/eslint-config-tidy-react",
     "main": "index.js",
