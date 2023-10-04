@@ -1,7 +1,6 @@
-import path from 'path';
 import test from 'ava';
 import isPlainObj from 'is-plain-obj';
-import eslint from 'eslint';
+import { ESLint } from 'eslint';
 import tidyReact from '.';
 
 const getRules = (errors) => {
@@ -11,13 +10,14 @@ const getRules = (errors) => {
     return [...new Set(ruleIds)];
 };
 
-const lint = (input) => {
-    const linter = new eslint.CLIEngine({
-        useEslintrc : false,
-        configFile  : path.join(__dirname, 'index.js')
+const lint = async (input) => {
+    const linter = new ESLint({
+        useEslintrc    : false,
+        overrideConfig : tidyReact
     });
 
-    return linter.executeOnText(input).results[0].messages;
+    const [result] = await linter.lintText(input);
+    return result.messages;
 };
 
 test('config is valid', (t) => {
@@ -28,16 +28,16 @@ test('config is valid', (t) => {
     t.true(Object.keys(tidyReact.rules).length >= 40);
 });
 
-test('requires react import', (t) => {
+test('requires react import', async (t) => {
     const bad = 'var el = <div />';
     const good = 'var React = require(react);\n' + bad;
-    t.deepEqual(getRules(lint(bad)), ['react/react-in-jsx-scope']);
-    t.deepEqual(lint(good), []);
+    t.deepEqual(getRules(await lint(bad)), ['react/react-in-jsx-scope']);
+    t.deepEqual(await lint(good), []);
 });
 
-test('requires indentation of multiline logical expressions', (t) => {
+test('requires indentation of multiline logical expressions', async (t) => {
     const bad = 'var React = require(\'react\');\nvar el = (\n    <div>\n        {condition && (\n        <div />\n        )}\n    </div>\n);';
     const good = 'var React = require(\'react\');\nvar el = (\n    <div>\n        {condition && (\n            <div />\n        )}\n    </div>\n);';
-    t.deepEqual(getRules(lint(bad)), ['react/jsx-indent']);
-    t.deepEqual(lint(good), []);
+    t.deepEqual(getRules(await lint(bad)), ['react/jsx-indent']);
+    t.deepEqual(await lint(good), []);
 });

@@ -21,23 +21,23 @@
         "email": "me@seth-holladay.com"
     },
     "engines": {
-        "node": ">=6"
+        "node": ">=14"
     },
     "license": "MPL-2.0",
     "files": [
         "index.js"
     ],
     "dependencies": {
-        "eslint-config-xo-react": "^0.20.0"
+        "eslint-config-xo-react": "^0.27.0"
     },
     "devDependencies": {
         "ava": "^2.0.0",
-        "eslint": "^6.7.2",
-        "eslint-config-tidy": "^0.10.0",
+        "eslint": "^8.50.0",
+        "eslint-config-tidy": "^0.13.0",
         "eslint-plugin-react": "^7.0.1",
-        "eslint-plugin-react-hooks": "^2.3.0",
-        "is-plain-obj": "^2.0.0",
-        "xo": "^0.25.3"
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "is-plain-obj": "^3.0.0",
+        "xo": "^0.56.0"
     },
     "keywords": [
         "❤️",
@@ -71,6 +71,9 @@
         "simple"
     ],
     "xo": {
-        "extend": "tidy"
+        "extend": "tidy",
+        "rules": {
+            "unicorn/prefer-module": "off"
+        }
     }
 }
