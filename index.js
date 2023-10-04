@@ -10,6 +10,10 @@ module.exports = {
         'react/forbid-prop-types' : ['error', {
             forbid : ['any', 'array']
         }],
+        'react/function-component-definition' : ['error', {
+            namedComponents   : 'arrow-function',
+            unnamedComponents : 'arrow-function'
+        }],
         'react/no-array-index-key'       : 'error',
         'react/no-children-prop'         : 'error',
         'react/no-danger'                : 'error',

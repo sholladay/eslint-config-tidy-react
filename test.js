@@ -13,7 +13,13 @@ const getRules = (errors) => {
 const lint = async (input) => {
     const linter = new ESLint({
         useEslintrc    : false,
-        overrideConfig : tidyReact
+        overrideConfig : {
+            ...tidyReact,
+            parserOptions : {
+                ...tidyReact.parserOptions,
+                ecmaVersion : 'latest'
+            }
+        }
     });
 
     const [result] = await linter.lintText(input);
@@ -39,5 +45,12 @@ test('requires indentation of multiline logical expressions', async (t) => {
     const bad = 'var React = require(\'react\');\nvar el = (\n    <div>\n        {condition && (\n        <div />\n        )}\n    </div>\n);';
     const good = 'var React = require(\'react\');\nvar el = (\n    <div>\n        {condition && (\n            <div />\n        )}\n    </div>\n);';
     t.deepEqual(getRules(await lint(bad)), ['react/jsx-indent']);
+    t.deepEqual(await lint(good), []);
+});
+
+test('requires arrow function components', async (t) => {
+    const bad = 'var React = require(\'react\');\nfunction Foo() {\n    return <p>hi</p>;\n}';
+    const good = 'var React = require(\'react\');\nvar Foo = () => {\n    return <p>hi</p>;\n};';
+    t.deepEqual(getRules(await lint(bad)), ['react/function-component-definition']);
     t.deepEqual(await lint(good), []);
 });
