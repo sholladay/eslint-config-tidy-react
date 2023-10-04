@@ -34,7 +34,6 @@ module.exports = {
         'react/require-render-return'        : 'error',
         'react/sort-comp'                    : 'error',
         'react/sort-prop-types'              : 'error',
-        'react/state-in-constructor'         : ['error', 'always'],
         'react/static-property-placement'    : ['error', 'property assignment'],
         'react/style-prop-object'            : 'error',
         'react/jsx-closing-bracket-location' : ['error', 'line-aligned'],
