@@ -1,4 +1,4 @@
-# eslint-config-tidy-react [![Build status for ESLint Config Tidy React](https://travis-ci.com/sholladay/eslint-config-tidy-react.svg?branch=master "Build Status")](https://travis-ci.com/sholladay/eslint-config-tidy-react "Builds")
+# eslint-config-tidy-react [![Build status for ESLint Config Tidy React](https://api.travis-ci.com/sholladay/eslint-config-tidy-react.svg "Build Status")](https://travis-ci.com/sholladay/eslint-config-tidy-react "Builds")
 
 > ESLint [shareable config](http://eslint.org/docs/developer-guide/shareable-configs.html) for [React](https://facebook.github.io/react/) with Tidy style
 
@@ -22,28 +22,26 @@ All you have to do is tell your linter to use this config.
 
 ### Use with [XO](https://github.com/sindresorhus/xo) (recommended)
 
-Add some XO config to your package.json:
+Add an `xo.config.js` file to your project:
 
-```json
-{
-    "name": "my-awesome-project",
-    "xo": {
-        "extend": ["tidy", "tidy-react"]
-    }
-}
+```js
+import tidyReact from 'eslint-config-tidy-react';
+
+export default [
+    ...tidyReact
+];
 ```
 
 ### Alternatively, use with [ESLint](https://github.com/eslint/eslint)
 
-Add some ESLint config to your package.json:
+Add an `eslint.config.js` file to your project:
 
-```json
-{
-    "name": "my-awesome-project",
-    "eslintConfig": {
-        "extends": ["tidy", "tidy-react"]
-    }
-}
+```js
+import tidyReact from 'eslint-config-tidy-react';
+
+export default [
+    ...tidyReact
+];
 ```
 
 ## Related

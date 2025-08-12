@@ -1,10 +1,10 @@
 language: node_js
 
 node_js:
-  - 12
-  - 10
+  - 24
+  - 22
+  - 20
 
 os:
   - linux
-  - osx
   - windows
