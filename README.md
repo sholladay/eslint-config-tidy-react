@@ -25,9 +25,11 @@ All you have to do is tell your linter to use this config.
 Add an `xo.config.js` file to your project:
 
 ```js
+import tidy from 'eslint-config-tidy';
 import tidyReact from 'eslint-config-tidy-react';
 
 export default [
+    ...tidy,
     ...tidyReact
 ];
 ```
@@ -37,9 +39,11 @@ export default [
 Add an `eslint.config.js` file to your project:
 
 ```js
+import tidy from 'eslint-config-tidy';
 import tidyReact from 'eslint-config-tidy-react';
 
 export default [
+    ...tidy,
     ...tidyReact
 ];
 ```
