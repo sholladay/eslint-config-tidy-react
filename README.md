@@ -13,7 +13,7 @@ Note that this only enables rules related to React. You probably want to compose
 ## Install
 
 ```sh
-npm install eslint-config-tidy eslint-config-tidy-react eslint-plugin-react --save-dev
+npm install eslint-config-tidy eslint-config-tidy-react --save-dev
 ```
 
 ## Usage
